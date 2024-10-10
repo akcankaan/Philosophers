@@ -1,12 +1,14 @@
 NAME	= philo
 CC		= cc
 RM		= rm -rf
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 
 SRC =	src/main.c \
 		src/situation.c \
 		src/utils.c \
-		src/utils1.c
+		src/utils1.c \
+		src/init.c \
+		src/free.c \
 
 OBJ_DIR = .objs
 

@@ -14,14 +14,17 @@ typedef struct s_philo {
     int right_fork;
     long last_meal_time;
     int meals_eaten;
+    pthread_t thread;
     struct s_table *table;
 }   t_philo;
 
 typedef struct s_table {
+    unsigned int ready_count;
     unsigned int num_philos;
     unsigned int time_to_die;
     int time_to_eat;
     int time_to_sleep;
+    int must_eat;
     int philo_dead;
     uint64_t start_time;
     pthread_mutex_t mtx;
@@ -31,14 +34,26 @@ typedef struct s_table {
     t_philo *philos;
 }           t_table;
 
+// init.c
+int init_mutex(t_table *table);
+int init_philos(t_table *table);
+int init_table(t_table *table, int argc, char **argv);
+
+// free.c 
+int error_init(t_table *table, int len, int m_num);
+
 // main.c
+void    *control_dead(void *arg);
 int die_control(t_philo *philo);
 
 // utils.c
 int ft_atoi(const char *str);
+int ft_strlen(const char *s);
 
 // utils1.c
-void    print_status(t_philo *philo, const char *status); // Değişiklik burada
+void    print_status(t_philo *philo, const char *status);
+void my_sleep(int time);
+void ft_putstr_fd(const char *s, int fd);
 
 // situation.c
 void    take_forks(t_philo *philo);
@@ -48,9 +63,6 @@ void    sleep_and_think(t_philo *philo);
 void    *philosopher_routine(void *arg);
 void    *monitor_routine(void *arg);
 int philo_check(t_philo *philo);
-
 uint64_t get_time_in_ms(void);
-void my_sleep(int time);
-
 
 #endif
