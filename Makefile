@@ -9,6 +9,7 @@ SRC =	src/main.c \
 		src/utils1.c \
 		src/init.c \
 		src/free.c \
+		src/simulation.c \
 
 OBJ_DIR = .objs
 

@@ -4,7 +4,8 @@
 int die_control(t_philo *philo)
 {
     pthread_mutex_lock(&philo->table->print_lock);
-    pthread_mutex_lock(&philo->table->mtx);
+    if (philo->table->ready_count == 0)
+        philo->table->philo_dead = 1; 
     if (philo->table->philo_dead)
     {
         pthread_mutex_unlock(&philo->table->print_lock);
@@ -47,7 +48,5 @@ int main(int argc, char **argv)
         return (ft_putstr_fd("Error: initalization failed\n", 2), 1);
     else if (start_simulation(&table))
         return (ft_putstr_fd("Error: simulation failed\n", 2), 1);
-    control_dead(&table);
-
     return 0;
 }

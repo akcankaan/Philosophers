@@ -22,7 +22,7 @@ void eat(t_philo *philo) {
     print_status(philo, "is eating");
 
     philo->last_meal_time = get_time_in_ms();
-    usleep(table->time_to_eat * 1000);
+    my_sleep(table->time_to_eat);
     philo->meals_eaten++;
 
     // Çatalları bırak
@@ -32,7 +32,7 @@ void eat(t_philo *philo) {
 
 void sleep_and_think(t_philo *philo) {
     print_status(philo, "is sleeping");
-    usleep(philo->table->time_to_sleep * 1000);
+    my_sleep(philo->table->time_to_sleep);
     print_status(philo, "is thinking");
 }
 
@@ -55,7 +55,29 @@ int philo_check(t_philo *philo)
     pthread_mutex_unlock(&philo->table->time);
     return (0);
 }
+int philo_join(t_table *table)
+{
+    unsigned int i;
+    int exit_code;
 
+    exit_code = 0;
+    table->start_time = get_time_in_ms();
+    while (1)
+    {
+        pthread_mutex_lock(&table->mtx);
+        if (table->ready_count == table->num_philos)
+        {
+            pthread_mutex_unlock(&table->mtx);
+            break;
+        }
+        pthread_mutex_unlock(&table->mtx);
+    }
+    i = -1;
+    while (++i < table->num_philos)
+        if (pthread_join(table->philos[i].thread, NULL))
+            exit_code = 1;
+    return (exit_code);
+}
 void *philosopher_routine(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
@@ -68,6 +90,12 @@ void *philosopher_routine(void *arg)
         sleep_and_think(philo);
         if (die_control(philo))
             break;
+        if (philo->table->must_eat > 0 && philo->meals_eaten == philo->table->must_eat)
+        {
+            pthread_mutex_lock(&philo->table->print_lock);
+            philo->table->ready_count--;
+            pthread_mutex_unlock(&philo->table->print_lock);
+        }
     }
     return (NULL);
 }

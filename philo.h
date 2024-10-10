@@ -40,6 +40,9 @@ int init_philos(t_table *table);
 int init_table(t_table *table, int argc, char **argv);
 
 // free.c 
+int free_table(t_table *table);
+int free_mutex(t_table *table);
+int error_create(t_table *table, int len);
 int error_init(t_table *table, int len, int m_num);
 
 // main.c
@@ -63,6 +66,10 @@ void    sleep_and_think(t_philo *philo);
 void    *philosopher_routine(void *arg);
 void    *monitor_routine(void *arg);
 int philo_check(t_philo *philo);
+int philo_join(t_table *table);
 uint64_t get_time_in_ms(void);
+
+// simulation.c
+int start_simulation(t_table *table);
 
 #endif
