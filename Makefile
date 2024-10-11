@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/11 13:49:44 by mehakcan          #+#    #+#              #
+#    Updated: 2024/10/11 17:04:02 by mehakcan         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	= philo
 CC		= cc
 RM		= rm -rf
-CFLAGS	= -Wall -Wextra -Werror -g
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=thread -pthread
 
 SRC =	src/main.c \
 		src/situation.c \
