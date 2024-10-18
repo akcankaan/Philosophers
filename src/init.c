@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:53:33 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/11 17:15:18 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:07:55 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	init_table(t_table *table, int argc, char **argv)
 		table->must_eat = atoi(argv[5]);
 	table->philo_dead = 0;
 	table->ready_count = table->num_philos;
-	table->start_time = 0;
+	table->start_time = get_time_in_ms();
 	table->philos = NULL;
 	table->forks = NULL;
 	if (init_mutex(table))

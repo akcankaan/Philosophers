@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:40:01 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/11 13:40:05 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:08:00 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,6 @@ int	philo_join(t_table *table)
 	int				exit_code;
 
 	exit_code = 0;
-	table->start_time = get_time_in_ms();
-	while (1)
-	{
-		pthread_mutex_lock(&table->mtx);
-		if (table->ready_count == table->num_philos)
-		{
-			pthread_mutex_unlock(&table->mtx);
-			break ;
-		}
-		pthread_mutex_unlock(&table->mtx);
-	}
 	i = -1;
 	while (++i < table->num_philos)
 		if (pthread_join(table->philos[i].thread, NULL))

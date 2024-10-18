@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:42:35 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/11 17:03:31 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:48:39 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ int	die_control(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->table->print_lock);
 	if (philo->table->ready_count == 0)
-		// Tüm filozofların hazır olup olmadığını kontrol et
 		philo->table->philo_dead = 1;
-	// Eğer bir filozof öldüyse, simülasyonu durdur
 	if (philo->table->philo_dead)
 	{
 		pthread_mutex_unlock(&philo->table->print_lock);
-		return (1); // Ölüm durumunu bildir
+		return (1);
 	}
 	pthread_mutex_unlock(&philo->table->print_lock);
 	return (0);
@@ -35,19 +33,18 @@ void	*control_dead(void *arg)
 	t_table			*table;
 
 	table = arg;
-	while (!table->philo_dead) // Eğer bir filozof öldüyse döngüden çık
+	while (!table->philo_dead)
 	{
 		i = -1;
 		while (++i < table->num_philos)
 		{
-			if (die_control(&table->philos[i])) // Ölüm durumu kontrolü
+			if (die_control(&table->philos[i]))
 				break ;
 			if (philo_check(&table->philos[i]))
-				// Filozofun durumu kontrol ediliyor
 				break ;
 		}
 	}
-	return (NULL); // Simülasyon sonlanıyor
+	return (NULL);
 }
 
 int	main(int argc, char **argv)

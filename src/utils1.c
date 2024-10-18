@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:03:04 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/11 13:39:47 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:12:07 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 void	print_status(t_philo *philo, const char *status)
 {
 	pthread_mutex_lock(&philo->table->print_lock);
-	printf("%llu %d %s\n", get_time_in_ms() - philo->table->start_time,
-		philo->id, status);
+	if (!philo->table->philo_dead)
+	{
+		printf("%llu %d %s\n", get_time_in_ms() - philo->table->start_time,
+			philo->id, status);
+		pthread_mutex_unlock(&philo->table->print_lock);
+	}
 	pthread_mutex_unlock(&philo->table->print_lock);
 }
 

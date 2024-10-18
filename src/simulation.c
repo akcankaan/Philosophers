@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:58:41 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/11 17:06:08 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:21:27 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	start_simulation(t_table *table)
 			if (pthread_create(&table->philos[i].thread, NULL,
 					philosopher_routine, &table->philos[i]))
 				return (error_create(table, i));
+	if (philo_join(table))
+		return (1);
 	if (pthread_join(thread, NULL))
 		return (1);
 	return (0);
