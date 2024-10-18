@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:58:41 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/18 15:21:27 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:05:35 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ void	sleep_and_think(t_philo *philo)
 
 void	take_forks(t_philo *philo)
 {
+	if (philo->table->num_philos == 1)
+	{
+		pthread_mutex_lock(&philo->table->forks[philo->left_fork]);
+		print_status(philo, "has taken the left fork");
+		pthread_mutex_unlock(&philo->table->forks[philo->left_fork]);
+		my_sleep(philo->table->time_to_die);
+		return ;
+	}
 	pthread_mutex_lock(&philo->table->forks[philo->left_fork]);
 	print_status(philo, "has taken the left fork");
 	pthread_mutex_lock(&philo->table->forks[philo->right_fork]);
