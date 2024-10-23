@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:35:16 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/11 13:35:16 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/23 13:01:15 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 # define PHILO_H
 
 # include <pthread.h>
-# include <stdint.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <sys/time.h>
-# include <unistd.h>
 
 typedef struct s_philo
 {
@@ -40,7 +35,7 @@ typedef struct s_table
 	int				time_to_sleep;
 	int				must_eat;
 	int				philo_dead;
-	uint64_t		start_time;
+	u_int64_t		start_time;
 	pthread_mutex_t	mtx;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_lock;
@@ -66,12 +61,14 @@ int					die_control(t_philo *philo);
 // utils.c
 int					ft_atoi(const char *str);
 int					ft_strlen(const char *s);
+int					ft_isdigit(int c);
+int					arg_check(int argc, char **argv);
 
 // utils1.c
 void				print_status(t_philo *philo, const char *status);
 void				my_sleep(int time);
 void				ft_putstr_fd(const char *s, int fd);
-uint64_t			get_time_in_ms(void);
+u_int64_t			get_time_in_ms(void);
 
 // situation.c
 void				*philosopher_routine(void *arg);

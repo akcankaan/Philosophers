@@ -6,11 +6,14 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:03:04 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/18 15:12:07 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/23 13:01:22 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+#include <stdio.h>
+#include <sys/time.h>
+#include <unistd.h>
 
 void	print_status(t_philo *philo, const char *status)
 {
@@ -38,7 +41,7 @@ void	ft_putstr_fd(const char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 
-uint64_t	get_time_in_ms(void)
+u_int64_t	get_time_in_ms(void)
 {
 	struct timeval	time;
 

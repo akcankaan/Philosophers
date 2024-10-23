@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:42:35 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/18 15:48:39 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:56:57 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 5 || argc > 6)
 		return (ft_putstr_fd("Error: wrong number of arguments\n", 2), 1);
+	else if (arg_check(argc, argv))
+		return (ft_putstr_fd("Error: invalid arguments\n", 2), 1);
 	else if (init_table(&table, argc, argv))
 		return (ft_putstr_fd("Error: initalization failed\n", 2), 1);
 	else if (start_simulation(&table))

@@ -6,11 +6,12 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:40:01 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/18 15:08:00 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:59:32 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+#include <stdio.h>
 
 int	philo_dead(t_philo *philo)
 {
@@ -51,7 +52,7 @@ void	*philosopher_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->id % 2)
+	if (philo->id % 2 == 0)
 		my_sleep(philo->table->time_to_eat / 2);
 	while (1)
 	{
