@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:03:04 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/23 13:01:22 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:11:53 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,16 @@ void	print_status(t_philo *philo, const char *status)
 	{
 		printf("%llu %d %s\n", get_time_in_ms() - philo->table->start_time,
 			philo->id, status);
-		pthread_mutex_unlock(&philo->table->print_lock);
 	}
 	pthread_mutex_unlock(&philo->table->print_lock);
 }
 
-void	my_sleep(int time)
+void	my_sleep(u_int64_t time)
 {
-	uint64_t	start;
+	u_int64_t	start;
 
 	start = get_time_in_ms();
-	while ((get_time_in_ms() - start) < (uint64_t)time)
+	while (get_time_in_ms() - start < time)
 		usleep(250);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:35:16 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/23 13:01:15 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:00:52 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,40 +43,33 @@ typedef struct s_table
 	t_philo			*philos;
 }					t_table;
 
-// init.c
 int					init_mutex(t_table *table);
 int					init_philos(t_table *table);
 int					init_table(t_table *table, int argc, char **argv);
 
-// free.c
 int					free_table(t_table *table);
 int					free_mutex(t_table *table);
 int					error_create(t_table *table, int len);
 int					error_init(t_table *table, int len, int m_num);
 
-// main.c
 void				*control_dead(void *arg);
 int					die_control(t_philo *philo);
 
-// utils.c
 int					ft_atoi(const char *str);
 int					ft_strlen(const char *s);
 int					ft_isdigit(int c);
 int					arg_check(int argc, char **argv);
 
-// utils1.c
 void				print_status(t_philo *philo, const char *status);
-void				my_sleep(int time);
+void				my_sleep(u_int64_t time);
 void				ft_putstr_fd(const char *s, int fd);
 u_int64_t			get_time_in_ms(void);
 
-// situation.c
 void				*philosopher_routine(void *arg);
 int					philo_check(t_philo *philo);
 int					philo_join(t_table *table);
 int					philo_dead(t_philo *philo);
 
-// simulation.c
 int					start_simulation(t_table *table);
 void				take_forks(t_philo *philo);
 void				put_forks(t_philo *philo);
