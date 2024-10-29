@@ -60,13 +60,13 @@ int	init_philos(t_table *table)
 int	init_table(t_table *table, int argc, char **argv)
 {
 	table->num_philos = ft_atoi(argv[1]);
-	table->num_philos = atoi(argv[1]);
-	table->time_to_die = atoi(argv[2]);
-	table->time_to_eat = atoi(argv[3]);
-	table->time_to_sleep = atoi(argv[4]);
+	table->num_philos = ft_atoi(argv[1]);
+	table->time_to_die = ft_atoi(argv[2]);
+	table->time_to_eat = ft_atoi(argv[3]);
+	table->time_to_sleep = ft_atoi(argv[4]);
 	table->must_eat = -1;
 	if (argc == 6)
-		table->must_eat = atoi(argv[5]);
+		table->must_eat = ft_atoi(argv[5]);
 	table->philo_dead = 0;
 	table->ready_count = table->num_philos;
 	table->start_time = get_time_in_ms();
