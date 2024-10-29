@@ -60,7 +60,6 @@ int	init_philos(t_table *table)
 int	init_table(t_table *table, int argc, char **argv)
 {
 	table->num_philos = ft_atoi(argv[1]);
-	table->num_philos = ft_atoi(argv[1]);
 	table->time_to_die = ft_atoi(argv[2]);
 	table->time_to_eat = ft_atoi(argv[3]);
 	table->time_to_sleep = ft_atoi(argv[4]);
