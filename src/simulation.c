@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:58:41 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/18 17:05:35 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:27:07 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	start_simulation(t_table *table)
 	unsigned int	i;
 	pthread_t		thread;
 
-	table->start_time = get_time_in_ms();
 	i = -1;
 	if (pthread_create(&thread, NULL, control_dead, table))
 		return (1);

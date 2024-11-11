@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:40:01 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/23 12:59:32 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:20:41 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void	*philosopher_routine(void *arg)
 		sleep_and_think(philo);
 		if (die_control(philo))
 			break ;
+		pthread_mutex_lock(&philo->table->print_lock);
 		if (philo->table->must_eat > 0
 			&& philo->meals_eaten == philo->table->must_eat)
 		{
-			pthread_mutex_lock(&philo->table->print_lock);
 			philo->table->ready_count--;
-			pthread_mutex_unlock(&philo->table->print_lock);
 		}
+		pthread_mutex_unlock(&philo->table->print_lock);
 	}
 	return (NULL);
 }

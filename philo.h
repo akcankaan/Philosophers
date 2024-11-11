@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:35:16 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/23 16:00:52 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:18:32 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_table
 	int				must_eat;
 	int				philo_dead;
 	u_int64_t		start_time;
-	pthread_mutex_t	mtx;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_lock;
 	pthread_mutex_t	time;

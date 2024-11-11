@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:53:33 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/18 15:07:55 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:13:10 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	init_mutex(t_table *table)
 		return (error_init(table, i, 0));
 	if (pthread_mutex_init(&table->time, NULL))
 		return (error_init(table, i, 1));
-	if (pthread_mutex_init(&table->mtx, NULL))
-		return (error_init(table, i, 2));
 	return (0);
 }
 

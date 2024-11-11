@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:42:35 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/23 12:56:57 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:39:48 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*control_dead(void *arg)
 	t_table			*table;
 
 	table = arg;
-	while (!table->philo_dead)
+	while (1)
 	{
 		i = -1;
 		while (++i < table->num_philos)
@@ -43,6 +43,13 @@ void	*control_dead(void *arg)
 			if (philo_check(&table->philos[i]))
 				break ;
 		}
+		pthread_mutex_lock(&table->print_lock);
+		if (table->philo_dead)
+		{
+			pthread_mutex_unlock(&table->print_lock);
+			break ;
+		}
+		pthread_mutex_unlock(&table->print_lock);
 	}
 	return (NULL);
 }

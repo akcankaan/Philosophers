@@ -6,7 +6,7 @@
 /*   By: mehakcan <mehakcan@student.42.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 13:43:20 by mehakcan          #+#    #+#             */
-/*   Updated: 2024/10/11 13:43:27 by mehakcan         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:12:37 by mehakcan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	free_mutex(t_table *table)
 		exit_code = 1;
 	if (pthread_mutex_destroy(&table->time))
 		exit_code = 1;
-	if (pthread_mutex_destroy(&table->mtx))
-		exit_code = 1;
 	if (table->forks)
 		free(table->forks);
 	return (exit_code);
@@ -55,8 +53,6 @@ int	error_init(t_table *table, int len, int m_num)
 		pthread_mutex_destroy(&table->print_lock);
 	else if (m_num > 1)
 		pthread_mutex_destroy(&table->time);
-	else if (m_num > 2)
-		pthread_mutex_destroy(&table->mtx);
 	while (--len >= 0)
 		pthread_mutex_destroy(&table->forks[len]);
 	if (table->forks)
