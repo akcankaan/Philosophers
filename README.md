@@ -122,3 +122,5 @@ make
 - İş Parçacıkları: İş parçacıklarını (pthread) kullanarak paralel işlem yapmayı öğrenmek.
 - Veri Yarışı Yönetimi: mutex kullanarak veri yarışlarını önlemek.
 - Senkronizasyon: Kritik bölge koruması ve kaynak paylaşımı üzerinde çalışmak.
+## Lisans
+Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakınız.
