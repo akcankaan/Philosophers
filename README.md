@@ -11,15 +11,16 @@
 Bu proje, çoklu iş parçacığı ve senkronizasyon konularında temel bilgiler edinmeyi hedefler. Filozofların yemek, düşünme ve uyuma döngülerini simüle ederek thread ve mutex yapılarını uygulamalı olarak öğrenmenizi sağlar.
 
 ## İçindekiler
-- Proje Özeti
-- Kurallar ve Gereksinimler
-- Projenin Mantığı
-- Data Race ve Çözüm Yöntemleri
-- Thread ve Mutex Kullanımı
-- Giriş Parametreleri
-- Log Formatı
-- Derleme ve Kullanımı
-- Hedefler
+- [Proje Özeti](#proje-özeti)
+- [Kurallar ve Gereksinimler](#kurallar-ve-gereksinimler)
+- [Projenin Mantığı](#projenin-mantığı)
+- [Data Race ve Çözüm Yöntemleri](#data-race-ve-çözüm-yöntemleri)
+- [Thread ve Mutex Kullanımı](#thread-ve-mutex-kullanımı)
+- [Giriş Parametreleri](#giriş-parametreleri)
+- [Log Formatı](#log-formatı)
+- [Derleme ve Kullanımı](#derleme-ve-kullanımı)
+- [Hedefler](#Hedefler)
+- [Lisans](#lisans)
 
 ## Proje Özeti
 Bu proje, filozofların "Düşünen Filozoflar Problemi"ni simüle eder. Filozofların yemek, düşünme ve uyuma döngülerinde veri yarışını önlemeniz ve senkronizasyonu sağlamanız beklenir. Her filozofun açlıktan ölmeden önce yemek yemesi sağlanmalıdır.
