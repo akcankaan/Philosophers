@@ -18,7 +18,7 @@ Bu proje, çoklu iş parçacığı ve senkronizasyon konularında temel bilgiler
 - [Thread ve Mutex Kullanımı](#thread-ve-mutex-kullanımı)
 - [Giriş Parametreleri](#giriş-parametreleri)
 - [Log Formatı](#log-formatı)
-- [Derleme ve Kullanımı](#derleme-ve-kullanımı)
+- [Derleme ve Kullanım](#derleme-ve-kullanım)
 - [Hedefler](#Hedefler)
 - [Lisans](#lisans)
 
